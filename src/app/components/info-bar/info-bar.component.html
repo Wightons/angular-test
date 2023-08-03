@@ -1,0 +1,20 @@
+<div class="info-bar" [class.active]="showInfo">
+    <button class="close-btn" (click)="hideInfo()">X</button>
+    <div class="top-panel">
+        <img style="margin: 5px;" src="{{imagePath}}"/>
+        <div style="margin: 10px;">
+            <div>
+                <b>Name: </b>{{name}}
+            </div>
+            <div>
+                <b>Temperament: </b>{{temperament}}
+            </div>
+            <div>
+                <b>Origin: </b>{{origin}}
+            </div>
+        </div>
+    </div>
+    <div style="font-size: 20px; width: 50%; margin: 10px;">
+        {{description}}
+    </div>
+</div>

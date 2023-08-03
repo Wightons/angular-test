@@ -1,0 +1,29 @@
+<div class="main">
+    <mat-label class="search-label">Filter by keywords</mat-label>
+    <mat-form-field class="search">
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput type="search" placeholder="Search for articles" #box (keyup)="onTextChange(box.value)">
+    </mat-form-field>
+    <div>
+        <label>Results: {{filteredCats.length}}</label>
+        <hr/>
+        <div class="cards-container">
+            <mat-card *ngFor="let card of filteredCats" class="card">
+                <img mat-card-image src="{{card.url}}" style="width: 100%; height: 200px; object-fit: cover;">
+                <mat-card-header>
+                    <mat-card-subtitle> 
+                        <mat-icon matPrefix>format_size</mat-icon>
+                        height: {{card.height/10}}cm | width: {{card.width/10}}cm</mat-card-subtitle>
+                    <mat-card-title [innerHtml]="highlightText(card.name, searchText)"></mat-card-title>
+                </mat-card-header>
+                <mat-card-content style="height: 33%;">
+                    <p [innerHtml]="highlightText(card.origin, searchText)"></p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button (click)="showInfoBar(card.url ,card.name, card.description, card.temperament, card.origin)">Read more &rarr;</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<app-info-bar></app-info-bar>
